@@ -1,0 +1,190 @@
+.mag-cover {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  height: 100dvh; /* fallback for older browsers */
+  overflow: hidden;
+}
+
+.mag-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+@media (min-width: 480px) {
+  .mag-cover {
+    height: auto;
+    aspect-ratio: 9/16;
+    max-height: 100vh;
+  }
+}
+
+.mag-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.06) 0%,
+    rgba(0,0,0,0) 25%,
+    rgba(0,0,0,0.03) 50%,
+    rgba(0,0,0,0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.mag-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* ── WEDDING large title ── */
+.mag-wedding-title {
+  position: absolute;
+  bottom: 120px;
+  left: 16px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 18vw, 76px);
+  font-weight: 900;
+  color: white;
+  letter-spacing: 5px;
+  line-height: 1;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.15);
+}
+
+/* ── Names — right middle ── */
+.mag-names {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+  color: white;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+}
+
+.mag-name-highlight {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.mag-name-connector {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 200;
+  opacity: 0.85;
+}
+
+.mag-names-tagline {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-top: 6px;
+  color: rgba(255,255,255,0.95);
+}
+
+/* ── IN JUNE ── */
+.mag-in-month {
+  position: absolute;
+  bottom: 86px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mag-month-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: 6px;
+}
+
+.mag-month-line {
+  display: block;
+  width: 100px;
+  height: 1px;
+  background: rgba(255,255,255,0.5);
+}
+
+/* ── Bottom left — invite ── */
+.mag-invite-text {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 2px;
+  line-height: 1.8;
+}
+
+/* ── Bottom right — issue ── */
+.mag-issue {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+.mag-issue-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.mag-issue-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+  margin-top: -4px;
+}
+
+.mag-barcode {
+  display: flex;
+  gap: 1.5px;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.mag-barcode span {
+  display: block;
+  width: 2px;
+  background: rgba(255,255,255,0.6);
+}
+
+/* ── Scroll hint ── */
+.mag-scroll-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.mag-scroll-arrow {
+  width: 16px;
+  height: 16px;
+  border-right: 1.5px solid rgba(255,255,255,0.4);
+  border-bottom: 1.5px solid rgba(255,255,255,0.4);
+  transform: rotate(45deg);
+  animation: bounce-arrow 2s ease-in-out infinite;
+}
+
+@keyframes bounce-arrow {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.3; }
+  50% { transform: rotate(45deg) translateY(4px); opacity: 0.8; }
+}

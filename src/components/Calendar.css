@@ -1,0 +1,59 @@
+.cal-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+}
+.cal-head {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  padding: 8px 0;
+  letter-spacing: 1px;
+}
+.cal-day {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  padding: 9px 0;
+}
+.cal-day.sun { color: var(--accent-rose); }
+.cal-day.sat { color: #7B9EBF; }
+.cal-day.highlight {
+  position: relative;
+  color: white;
+  font-weight: 500;
+}
+.cal-day.highlight::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: var(--gold);
+  border-radius: 50%;
+  z-index: -1;
+}
+.cal-day.empty { visibility: hidden; }
+
+.cal-detail {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 2;
+  letter-spacing: 1px;
+}
+.dday {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  margin-top: 16px;
+}
