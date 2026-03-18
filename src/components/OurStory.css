@@ -33,9 +33,9 @@
 }
 
 .story-date {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 12px;
-  letter-spacing: 3px;
+  font-family: var(--font-formal);
+  font-size: 14px;
+  letter-spacing: 1px;
   color: var(--gold);
   margin-bottom: 4px;
 }

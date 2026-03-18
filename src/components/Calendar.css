@@ -51,9 +51,8 @@
   letter-spacing: 1px;
 }
 .dday {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
-  letter-spacing: 5px;
+  font-family: var(--font-script);
+  font-size: 22px;
   color: var(--gold);
   margin-top: 16px;
 }

@@ -68,25 +68,25 @@
 }
 
 .mag-name-highlight {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: var(--font-body-kr);
   font-size: 17px;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .mag-name-connector {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 14px;
-  font-weight: 200;
+  font-family: var(--font-formal);
+  font-size: 16px;
   opacity: 0.85;
+  margin: 0 2px;
 }
 
 .mag-names-tagline {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 15px;
+  font-family: var(--font-body-kr);
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.8;
-  margin-top: 6px;
+  margin-top: 8px;
   color: rgba(255,255,255,0.95);
 }
 
