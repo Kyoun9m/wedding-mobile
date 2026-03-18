@@ -1,7 +1,7 @@
 .account-toggle {
   width: 100%;
   padding: 14px 20px;
-  background: white;
+  background: rgba(255,255,255,0.04);
   border: 1px solid var(--border);
   border-radius: 4px;
   display: flex;

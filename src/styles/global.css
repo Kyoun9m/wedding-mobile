@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Pinyon+Script&family=Petit+Formal+Script&family=Noto+Serif+KR:wght@200;300;400;500;600&family=Noto+Sans+KR:wght@200;300;400;500&display=swap');
 
 :root {
-  /* Warm Neutral palette — 2026 trend */
-  --gold: #C5A55A;
-  --gold-light: #D8C68A;
-  --gold-muted: #BDA76E;
-  --cream: #FAF8F5;
-  --warm-white: #F5F0EB;
-  --bg-section: #F0ECE6;
-  --text-primary: #2C2820;
-  --text-secondary: #6B6358;
-  --text-tertiary: #9E9690;
-  --border: #E6E0D8;
-  --accent-rose: #D4A5A5;
+  /* Black & White + Gold — 더파티움 그랜드컨벤션홀 무드 */
+  --gold: #C9A96E;
+  --gold-light: #DCC48E;
+  --gold-muted: #B89B5E;
+  --cream: #0E0E0E;
+  --warm-white: #161616;
+  --bg-section: #111111;
+  --text-primary: #F0EDE8;
+  --text-secondary: #A8A29E;
+  --text-tertiary: #706B66;
+  --border: #2A2725;
+  --accent-rose: #C4A0A0;
   --accent-sage: #B2BDA0;
   --accent-terracotta: #C08B6E;
 
@@ -51,12 +51,12 @@ body {
   body {
     display: flex;
     justify-content: center;
-    background: #E8E2D8;
+    background: #080808;
   }
   .wrapper {
     max-width: 430px;
     min-height: 100vh;
-    box-shadow: 0 0 80px rgba(0,0,0,0.06);
+    box-shadow: 0 0 80px rgba(0,0,0,0.4);
     position: relative;
   }
 }

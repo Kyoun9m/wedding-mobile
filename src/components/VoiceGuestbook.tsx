@@ -92,6 +92,8 @@ export default function VoiceGuestbook() {
   const [uploading, setUploading] = useState(false);
   const [recordedBlob, setRecordedBlob] = useState<Blob | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [privacyAgreed, setPrivacyAgreed] = useState(false);
+  const [showPrivacyDetail, setShowPrivacyDetail] = useState(false);
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
@@ -171,6 +173,7 @@ export default function VoiceGuestbook() {
   };
 
   const uploadVoice = useCallback(async () => {
+    if (!privacyAgreed) { alert('개인정보 수집·이용에 동의해주세요.'); return; }
     if (!guestName.trim()) { alert('이름을 입력해주세요.'); return; }
     if (!guestPhone.trim()) { alert('연락처를 입력해주세요.'); return; }
     if (!recordedBlob) { alert('먼저 녹음해주세요.'); return; }
@@ -183,9 +186,10 @@ export default function VoiceGuestbook() {
     await supabase.from('voice_guestbook').insert({ name: guestName.trim(), phone: guestPhone.trim(), audio_url: urlData.publicUrl, duration: recordingTime, type: 'voice' });
     triggerConfetti();
     resetForm();
-  }, [guestName, guestPhone, recordedBlob, recordingTime]);
+  }, [guestName, guestPhone, recordedBlob, recordingTime, privacyAgreed]);
 
   const sendText = useCallback(async () => {
+    if (!privacyAgreed) { alert('개인정보 수집·이용에 동의해주세요.'); return; }
     if (!guestName.trim()) { alert('이름을 입력해주세요.'); return; }
     if (!guestPhone.trim()) { alert('연락처를 입력해주세요.'); return; }
     if (!textMessage.trim()) { alert('메시지를 입력해주세요.'); return; }
@@ -193,11 +197,12 @@ export default function VoiceGuestbook() {
     await supabase.from('voice_guestbook').insert({ name: guestName.trim(), phone: guestPhone.trim(), message: textMessage.trim(), audio_url: '', duration: 0, type: 'text' });
     triggerConfetti();
     resetForm();
-  }, [guestName, guestPhone, textMessage]);
+  }, [guestName, guestPhone, textMessage, privacyAgreed]);
 
   function resetForm() {
     setMode('none'); setGuestName(''); setGuestPhone(''); setTextMessage('');
     setRecordedBlob(null); chunksRef.current = []; setRecordingTime(0); setUploading(false);
+    setPrivacyAgreed(false); setShowPrivacyDetail(false);
   }
 
   const playAudio = (msg: GuestMessage) => {
@@ -282,13 +287,44 @@ export default function VoiceGuestbook() {
       {/* Form */}
       {mode !== 'none' && (
         <motion.div className="vgb-form" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <div className="vgb-privacy-notice">
-            🔒 부적절한 내용 방지를 위해 연락처를 수집합니다.
-            <span>외부에 공개되지 않습니다.</span>
-          </div>
           <div className="vgb-form-row">
             <input className="vgb-input" type="text" placeholder="이름" value={guestName} onChange={(e) => setGuestName(e.target.value)} maxLength={20} />
             <input className="vgb-input" type="tel" placeholder="010-0000-0000" value={guestPhone} onChange={(e) => setGuestPhone(e.target.value)} maxLength={15} />
+          </div>
+
+          {/* 개인정보 수집 동의 */}
+          <div className="vgb-privacy">
+            <label className="vgb-privacy-check">
+              <input type="checkbox" checked={privacyAgreed} onChange={(e) => setPrivacyAgreed(e.target.checked)} />
+              <span className="vgb-checkmark" />
+              <span className="vgb-privacy-label">개인정보 수집·이용에 동의합니다</span>
+            </label>
+            <button className="vgb-privacy-toggle" onClick={() => setShowPrivacyDetail(!showPrivacyDetail)} type="button">
+              {showPrivacyDetail ? '닫기' : '내용 보기'}
+            </button>
+            <AnimatePresence>
+              {showPrivacyDetail && (
+                <motion.div
+                  className="vgb-privacy-detail"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="vgb-privacy-content">
+                    <p><strong>개인정보 수집·이용 동의서</strong></p>
+                    <p>1. <strong>수집 목적</strong>: 결혼식 축하 방명록 운영 및 부적절한 내용 방지</p>
+                    <p>2. <strong>수집 항목</strong></p>
+                    <p>　- 필수: 이름, 연락처, 작성일시</p>
+                    <p>　- 선택: {mode === 'voice' ? '음성 메시지' : '텍스트 메시지'}</p>
+                    <p>　- 자동수집: IP 주소</p>
+                    <p>3. <strong>보유 기간</strong>: 결혼식일(2026.06.20)로부터 6개월 후 파기</p>
+                    <p>4. 동의를 거부할 권리가 있으며, 거부 시 방명록 작성이 제한됩니다.</p>
+                    <p>5. 수집된 개인정보는 제3자에게 제공하지 않습니다.</p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           {mode === 'voice' && (

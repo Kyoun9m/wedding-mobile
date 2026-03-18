@@ -14,12 +14,12 @@
   align-items: center;
   gap: 3px;
   padding: 12px 16px;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.6);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -29,9 +29,9 @@
 .vgb-cloud.text { cursor: default; }
 
 .vgb-cloud.playing {
-  background: rgba(255,248,240,0.95);
-  border-color: rgba(184,151,106,0.3);
-  box-shadow: 0 8px 32px rgba(184,151,106,0.15);
+  background: rgba(201,169,110,0.12);
+  border-color: rgba(201,169,110,0.3);
+  box-shadow: 0 8px 32px rgba(201,169,110,0.15);
 }
 
 .vgb-cloud-wave {
@@ -124,7 +124,7 @@
   align-items: center;
   gap: 6px;
   padding: 20px 16px;
-  background: white;
+  background: rgba(255,255,255,0.04);
   border: 1px solid var(--border);
   border-radius: 12px;
   cursor: pointer;
@@ -134,7 +134,7 @@
 .vgb-action-btn:active {
   transform: scale(0.97);
   border-color: var(--gold-muted);
-  background: var(--warm-white);
+  background: rgba(255,255,255,0.08);
 }
 
 .vgb-action-icon { font-size: 24px; }
@@ -146,29 +146,95 @@
   letter-spacing: 0.5px;
 }
 
-/* ═══════ Privacy Notice ═══════ */
-.vgb-privacy-notice {
-  border-radius: 8px;
-  padding: 10px 14px;
+/* ═══════ Privacy Consent ═══════ */
+.vgb-privacy {
   margin-bottom: 14px;
-  font-size: 11px;
-  font-weight: 300;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  text-align: center;
-  background: linear-gradient(135deg, #f8f6f2, #f5f2ed);
 }
 
-.vgb-privacy-notice span {
-  display: block;
+.vgb-privacy-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.vgb-privacy-check input[type="checkbox"] {
+  display: none;
+}
+
+.vgb-checkmark {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.vgb-privacy-check input:checked + .vgb-checkmark {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.vgb-privacy-check input:checked + .vgb-checkmark::after {
+  content: '✓';
+  color: white;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.vgb-privacy-label {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+.vgb-privacy-toggle {
+  margin-top: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 11px;
   color: var(--text-tertiary);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-left: 26px;
+}
+
+.vgb-privacy-detail {
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.vgb-privacy-content {
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   font-size: 10px;
-  margin-top: 2px;
+  font-weight: 300;
+  color: var(--text-tertiary);
+  line-height: 1.8;
+}
+
+.vgb-privacy-content strong {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.vgb-privacy-content p {
+  margin-bottom: 2px;
 }
 
 /* ═══════ Form ═══════ */
 .vgb-form {
-  background: white;
+  background: rgba(255,255,255,0.03);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 20px 18px;
@@ -230,7 +296,7 @@
   padding: 18px 28px;
   border: 2px dashed var(--border);
   border-radius: 14px;
-  background: var(--warm-white);
+  background: rgba(255,255,255,0.04);
   cursor: pointer;
   font-size: 12px;
   font-weight: 300;
