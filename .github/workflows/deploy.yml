@@ -20,4 +20,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=wedding-mobile
+          command: pages deploy dist --project-name=wedding-mobile --commit-dirty=true --commit-message="deploy from CI"
