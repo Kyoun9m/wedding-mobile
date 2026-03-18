@@ -31,7 +31,7 @@ export default function MagazineCover() {
         >
           <span className="mag-name-highlight">경민</span>{' '}
           <span className="mag-name-connector">그리고</span>{' '}
-          <span className="mag-name-highlight">OO</span>
+          <span className="mag-name-highlight">현영</span>
           <div className="mag-names-tagline">
             서로의 곁에서,<br />
             하나가 되어 걸어갑니다.

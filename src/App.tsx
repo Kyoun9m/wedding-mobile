@@ -3,7 +3,9 @@ import MagazineCover from './components/MagazineCover';
 import Section from './components/Section';
 import Gallery from './components/Gallery';
 import Calendar from './components/Calendar';
+import OurStory from './components/OurStory';
 import AccountSection from './components/AccountSection';
+import VoiceGuestbook from './components/VoiceGuestbook';
 import './styles/global.css';
 import './App.css';
 
@@ -39,24 +41,29 @@ export default function App() {
           </div>
           <div className="family-col">
             <div className="family-side">신부측</div>
-            <div className="family-parents">OOO · OOO</div>
-            <div className="family-child"><span className="family-relation">장녀</span> OO</div>
+            <div className="family-parents">이OO · OOO</div>
+            <div className="family-child"><span className="family-relation">장녀</span> 현영</div>
           </div>
         </div>
       </Section>
 
+      {/* Our Story */}
+      <Section label="Our Story" title="우리들의 이야기">
+        <OurStory />
+      </Section>
+
       {/* Gallery */}
-      <Section label="Gallery" title="우리의 이야기" noPadX>
+      <Section label="Gallery" title="우리의 순간" alt noPadX>
         <Gallery />
       </Section>
 
       {/* Calendar */}
-      <Section label="Calendar" title="예식 일시" alt>
+      <Section label="Calendar" title="예식 일시">
         <Calendar />
       </Section>
 
       {/* Venue */}
-      <Section label="Location" title="오시는 길">
+      <Section label="Location" title="오시는 길" alt>
         <div className="venue-photo">
           <motion.img
             src="/venue_mood.png"
@@ -99,8 +106,13 @@ export default function App() {
       </Section>
 
       {/* Account */}
-      <Section label="Gift" title="마음 전하실 곳" alt>
+      <Section label="Gift" title="마음 전하실 곳">
         <AccountSection />
+      </Section>
+
+      {/* Voice Guestbook */}
+      <Section label="Guestbook" title="축하의 목소리" alt>
+        <VoiceGuestbook />
       </Section>
 
       {/* RSVP */}
@@ -127,7 +139,7 @@ export default function App() {
         >
           ♥
         </motion.div>
-        <div className="footer-names">Kyoungmin & Bride</div>
+        <div className="footer-names">Kyoungmin & Hyunyoung</div>
       </div>
 
       {/* Toast */}
