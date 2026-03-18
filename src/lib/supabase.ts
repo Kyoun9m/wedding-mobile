@@ -5,11 +5,13 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-export interface VoiceMessage {
+export interface GuestMessage {
   id: string;
   name: string;
+  phone?: string;
   message?: string;
-  audio_url: string;
-  duration: number;
+  audio_url?: string;
+  duration?: number;
+  type: 'voice' | 'text';
   created_at: string;
 }
